@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/mavbharath/portfolio-flask   # update with your image name
+  repository: ghcr.io/mavbharath/portfolio-flask
   tag: "latest"
   pullPolicy: IfNotPresent
 
