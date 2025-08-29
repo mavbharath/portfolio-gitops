@@ -1,14 +1,36 @@
-replicaCount: 1
+replicaCount: 2
+name: web-app
+serviceAccountName: web-app-sa
+labels:
+  app: web-app
+  environment: dev
+
+selectorLabels:
+  app: web-app
 
 image:
-  repository: ghcr.io/mavbharath/portfolio-flask
-  tag: "latest"
-  pullPolicy: IfNotPresent
+  name: ghcr.io/mavbharath/python-ap
+  tag: 0.0.1
+  pullPolicy: Always
+
+imagePullSecrets:
+  - name: ghcr-secret
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+podSecurityContext: {}
+securityContext: {}
 
 service:
-  type: ClusterIP
-  port: 80
-
-containerPort: 8080
+  type: NodePort
+  port: 8080
+  nodePort: 30088
 
 resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
